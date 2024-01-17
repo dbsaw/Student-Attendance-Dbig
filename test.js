@@ -197,7 +197,7 @@ updateOptions();
 
 function getStudentlist(grade) {
   return fetch(
-    "https://raw.githubusercontent.com/dbsaw/Student-Attendance-Dbig/main/students.js"
+    "https://raw.githubusercontent.com/dbsaw/Student-Attendance-Dbig/main/students.json"
   )
     .then((response) => response.json())
     .then((data) => {

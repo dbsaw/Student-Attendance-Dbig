@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Dream Big Saar Students Attendance Form</title>
+</head>
+
+<body>
+
+    <div class="container mt-4">
+        <form id="form" method="POST">
+
+            <label for="StudentName1">Grade:</label>
+            <div class="input-group">
+                <select class="form-control" id="StudentGrade" name="Student Grade">
+                    <option></option>
+                    <option value="Grade1">Grade 1</option>
+                    <option value="Grade2">Grade 2</option>
+                    <option value="Grade3">Grade 3</option>
+                    <option value="Grade4">Grade 4</option>
+                    <option value="Grade5">Grade 5</option>
+                    <option value="Grade6">Grade 6</option>
+                    <option value="Level1">Level 1</option>
+                    <option value="Level2">Level 2</option>
+                    <option value="Level3">Level 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="StudentName">Student Name 1</label>
+                <select class="form-control Studentnames" name="Student Name" id="StudentName1">
+
+                </select>
+            </div>
+
+            <!-- Container for dynamically generated student name inputs -->
+            <div id="studentNamesContainer" class="mb-3"></div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-danger" onclick="resetForm()">Reset</button>
+                <button type="button" class="btn btn-success" onclick="addStudentInput();updateOptions()">+ Add
+                    Student</button>
+            </div>
+
+            <div id="message" class="alert alert-dismissible fade show" style="display: none;"></div>
+        </form>
+
+        <!-- Table to display student information -->
+        <table class="table table-bordered" id="studentTable" style="display: none;">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Attendance</th>
+                    <th>Behaviour</th>
+                    <th>Participation</th>
+                    <th>Spelling</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody"></tbody>
+        </table>
+    </div>
+
+    <script src="test.js"></script>

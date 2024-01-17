@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Dream Big Saar Students Attendance Form</title>
+</head>
+
+<body>
+
+    <div id="app" class="container mt-4">
+        <form @submit.prevent="submitForm">
+
+            <label for="StudentGrade">Grade:</label>
+            <div class="input-group">
+                <select v-model="selectedGrade" class="form-control" name="Student Grade" id="StudentGrade"
+                    @change="updateOptions">
+                    <option value="">Select Grade</option>
+                    <option v-for="grade in grades" :key="grade" :value="grade">{{ grade }}</option>
+                </select>
+            </div>
+
+            <div class="form-group" v-for="(student, index) in students" :key="index">
+                <label :for="'StudentName' + (index + 1)">Student Name {{ index + 1 }}</label>
+                <div class="input-group">
+                    <select class="form-control Studentnames" name="Student Name" :id="'StudentName' + (index + 1)"
+                        v-model="selected[index]">
+                        <option v-for="name in studentNames" :key="name" :value="name">{{ name }}</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-danger">Remove</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-danger" @click="resetForm">Reset</button>
+                <button type="button" class="btn btn-success" @click="addStudentInput">+ Add Student</button>
+            </div>
+
+            <div class="alert alert-dismissible fade show" v-if="message" style="display: none;">
+                {{ message }}
+            </div>
+        </form>
+
+        <!-- Table to display student information -->
+        <table class="table table-bordered" v-if="showTable">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Attendance</th>
+                    <th>Behaviour</th>
+                    <th>Participation</th>
+                    <th>Spelling</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(student, index) in selected" :key="index">
+                    <td>{{ student }}</td>
+                    <td>
+                        <select class="form-control form-control-sm">
+                            <option v-for="i in 2" :key="i" :value="i">{{ i-1 }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control form-control-sm">
+                            <option v-for="i in 5" :key="i" :value="i">{{ i-1 }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control form-control-sm">
+                            <option v-for="i in 6" :key="i" :value="i">{{ i-1 }}</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control form-control-sm">
+                            <option v-for="i in 6" :key="i" :value="i">{{ i-1 }}</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="test-vue.js"></script>
+</body>
+
+</html>

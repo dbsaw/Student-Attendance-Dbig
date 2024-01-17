@@ -56,3 +56,44 @@ document.getElementById("form").addEventListener("submit", function (e) {
         document.getElementById("message").style.display = "block";
       });
   });
+
+
+  var grade = document.querySelector("#StudentGrade");
+  grade.addEventListener("change", (event) => {
+      var selectedGrade = event.target.value;  // Get the selected value from the <select> element
+  
+      getStudentlist(selectedGrade).then(value => {
+          var names = document.querySelector('#Studentnames');
+          names.innerHTML = '';
+  
+          for (var key in value) {
+              if (value.hasOwnProperty(key)) {
+                // Create an <option> element
+                var option = document.createElement('option');
+                
+                // Set the value and text of the option
+                option.value = value[key];
+                option.text = value[key];
+                
+                // Append the option to the <select> element
+                names.add(option);
+              }
+          }
+          // Do something with the value, e.g., update the studentList
+          // studentList.innerHTML = value;
+      });
+  });
+
+
+  function getStudentlist(grade){
+    return fetch('https://raw.githubusercontent.com/dbsaw/Student-Attendance-Dbig/main/students.js')
+        .then(response => response.json())
+        .then(data => {
+            // Access data using keys
+            const value = data[grade];
+
+            // Print or manipulate the data as needed
+            return value;
+        })
+        .catch(error => console.error('Error fetching JSON:', error));
+}

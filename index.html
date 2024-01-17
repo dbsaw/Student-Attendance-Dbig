@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
-    />
-  </head>
-  <body>
-    <section class="hero is-link is-bold">
-      <div class="hero-body">
-          <h1 class="title">Dream Big Saar students attandance Form</h1>
-        
-      </div>
-    </section>
-    <form id="form" class="container m-4 pl-4" method="POST">
+<html lang="en">
 
-      <div class="field">
-        <label class="label">Choose the students grade:</label>
-        <div class="control">
-        <select id="Student Grade" class="select" name="Student Grade">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="icon" type="image/x-icon" href="logo.png">
+  <title>Dream Big Saar students attendance Form</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Dream Big Saar branch
+    </a>
+  </nav>
+
+  <div class="container mt-4">
+    <form id="form" method="POST">
+
+      <label for="StudentName1">Grade:</label>
+      <div class="input-group">
+        <select class="form-control" id="StudentGrade" name="Student Grade">
+          <option></option>
           <option value="Grade1">Grade 1</option>
           <option value="Grade2">Grade 2</option>
           <option value="Grade3">Grade 3</option>
@@ -30,109 +36,76 @@
           <option value="Level3">Level 3</option>
         </select>
       </div>
+
+      <div class="form-group">
+        <label for="StudentName">Student Name</label>
+        <select class="form-control" id="Studentnames" name="Student Name">
+
+        </select>
       </div>
 
-
-      <div class="field">
-        <label class="label">Student Name</label>
-        <div class="control">
-          <input
-            class="input"
-            type="text"
-            placeholder="Student Name"
-            name="Student Name"
-          />
+      <div class="form-group">
+        <label for="Attendance">Attendance</label>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="Attandance" name="Attandance" value="1">
+          <label class="form-check-label" for="Attandance">Arrived early?</label>
         </div>
       </div>
 
-      <div class="field">
-        <label class="label">Attandance</label>
-        <div class="control">
-          <input type="checkbox" id="Attandance" name="Attandance" value="1">
-          <label for="Attandance"> Arrived early?</label><br>
-        </div>
+      <div class="form-group">
+        <label for="Participation">Participation</label>
+        <select class="form-control" id="Participation" name="Participation">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
       </div>
 
-      <div class="field">
-        <label class="label">Participation</label>
-        <div class="control">
-          <input
-            class="input"
-            type="number"
-            placeholder="Participation"
-            name="Participation"
-            min="0"
-            max="5"
-          />
-        </div>
+      <div class="form-group">
+        <label for="Behavior">Behavior</label>
+        <select class="form-control" id="Behavior" name="Behavior">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
       </div>
 
-      <div class="field">
-        <label class="label">Behavior</label>
-        <div class="control">
-          <input
-            class="input"
-            type="number"
-            placeholder="Participation"
-            name="Behavior"
-            min="0"
-            max="5"
-          />
-        </div>
+      <div class="form-group">
+        <label for="Spelling">Spelling</label>
+        <select class="form-control" id="Spelling" name="Spelling">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
       </div>
 
-      <div class="field">
-        <label class="label">spelling</label>
-        <div class="control">
-          <input
-            class="input"
-            type="number"
-            placeholder="Participation"
-            name="spelling"
-            min="0"
-            max="5"
-          />
-        </div>
+      <div class="form-group">
+        <label for="Notes">Additional Notes</label>
+        <textarea class="form-control" id="Notes" placeholder="Any additional Notes" name="Notes"></textarea>
       </div>
 
-      <div class="field">
-        <label class="label">Additional Notes</label>
-        <div class="control">
-          <textarea
-            class="textarea"
-            placeholder="Any additional Notes"
-            name="Notes"
-          ></textarea>
-        </div>
-      </div>
+      <button type="submit" id="submit-button" class="btn btn-primary">Submit</button>
 
-      <div class="field is-grouped">
-        <div class="control">
-          <button class="button is-primary" type="submit" id="submit-button">
-            Submit
-          </button>
-        </div>
-        <div class="control">
-          <button class="button is-danger">Cancel</button>
-        </div>
-      </div>
     </form>
-    <div
-      id="message"
-      style="
-        display: none;
-        margin: 20px;
-        font-weight: bold;
-        color: green;
-        padding: 8px;
-        background-color: beige;
-        border-radius: 4px;
-        border-color: aquamarine;
-      "
-    ></div>
 
-    <script src="script.js">
+    <div id="message"
+      style="display: none; margin: 20px; font-weight: bold; color: green; padding: 8px; background-color: beige; border-radius: 4px; border-color: aquamarine;">
+    </div>
 
-    </script>
-  </body>
+    <script src="script.js"></script>
+
+  </div>
+
+
+</body>
+
 </html>
